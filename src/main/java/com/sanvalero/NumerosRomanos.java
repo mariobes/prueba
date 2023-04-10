@@ -1,5 +1,9 @@
 package com.sanvalero;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class NumerosRomanos {
 
     enum ValorLetrasRomanas {
@@ -15,41 +19,28 @@ public class NumerosRomanos {
 
         ValorLetrasRomanas(int valor) {
             this.valor = valor;
-
         }
+
+        public static List<ValorLetrasRomanas> listaNumerosRomanos() {
+            List<ValorLetrasRomanas> letras = Arrays.asList(ValorLetrasRomanas.values());
+            Collections.reverse(letras);
+            return letras;
+        }
+
     }
     public String play(int numero) {
 
         StringBuilder resultado = new StringBuilder();
 
-        if (numero >= 10) {
-            for (int i = 0; i < numero/10; i++) {
-                resultado.append("X");
-            }
-        } else {
-            for (int j = 0; j < numero; j++) {
-                resultado.append("I");
+        int resto = numero;
+
+        for (ValorLetrasRomanas letra : ValorLetrasRomanas.listaNumerosRomanos()) {
+            while (resto >= letra.valor) {
+                resultado.append(letra);
+                resto -= letra.valor;
             }
         }
 
-//        if (numero == 5) {
-//            return "V";
-//        }
-//        if (numero == 10) {
-//            return "X";
-//        }
-//        if (numero == 50) {
-//            return "L";
-//        }
-//        if (numero == 100) {
-//            return "C";
-//        }
-//        if (numero == 500) {
-//            return "D";
-//        }
-//        if (numero == 1000) {
-//            return "M";
-//        }
         return resultado.toString();
     }
 }
