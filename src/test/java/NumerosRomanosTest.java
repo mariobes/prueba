@@ -45,5 +45,5 @@ public class NumerosRomanosTest {
         NumerosRomanos numerosRomanos = new NumerosRomanos();
         Assert.assertEquals("M", numerosRomanos.play(1000));
     }
-    
+
 }
