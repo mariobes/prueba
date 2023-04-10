@@ -1,24 +1,29 @@
 import com.sanvalero.NumerosRomanos;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class NumerosRomanosTest {
 
+    private NumerosRomanos numerosRomanos;
+
+    @Before
+    public void SetUp() {
+        numerosRomanos = new NumerosRomanos();
+    }
+
     @Test
     public void _1_Devuelve_I() {
-        NumerosRomanos numerosRomanos = new NumerosRomanos();
         Assert.assertEquals("I", numerosRomanos.play(1));
     }
 
     @Test
     public void _5_Devuelve_V() {
-        NumerosRomanos numerosRomanos = new NumerosRomanos();
         Assert.assertEquals("V", numerosRomanos.play(5));
     }
 
     @Test
     public void _10_Devuelve_X() {
-        NumerosRomanos numerosRomanos = new NumerosRomanos();
         Assert.assertEquals("X", numerosRomanos.play(10));
     }
 
