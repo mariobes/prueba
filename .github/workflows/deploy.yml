@@ -16,12 +16,15 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
-
-      - name: Build Maven
-        run: mvn -B package --file pom.xml
+          
+      - name: Install dependencies Maven
+        run: mvn install
       
       - name: Run Checkstyle
         run: mvn checkstyle:checkstyle
+        
+      - name: Run tests Maven
+        run: mvn test
 
       - name: Deploy to main
         if: ${{ success() }}
