@@ -2,8 +2,9 @@ name: Deploy to main
 
 on:
   push:
-    branches:
-      - develop
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
 
 jobs:
   build-and-deploy:
@@ -16,6 +17,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
       
       - name: Run Checkstyle
         run: mvn checkstyle:checkstyle
